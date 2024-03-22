@@ -1,6 +1,6 @@
 <?php
 
-define('BASEURL','http://localhost/latihan');
+define('BASEURL','http://localhost');
 define('DB_HOST','localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
