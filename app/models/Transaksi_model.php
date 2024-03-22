@@ -122,6 +122,7 @@
             $this->db->bind('tambah_harga', $tambah_harga);
             $this->db->bind('id_admin', $admin);
 
+            
             $this->db->execute();
             return $this->db->rowCount();
         }
