@@ -172,7 +172,7 @@
             <table class="table border middle" width="100%">
                     <tr class="table border middle">
                         <td class="border middle" width="60%">Total Pendapatan</td>
-                        <td class="border middle" width="40%"><?=$total;?></td>
+                        <td class="border middle" width="40%">Rp. <?=$total;?></td>
                     </tr>
                 </table>
             </td>
