@@ -1,6 +1,6 @@
 <?php
 
-class Operator_model extends Controller{
+class Operator_model{
     
     private $table = 'operator';
     private $db;
@@ -19,8 +19,7 @@ class Operator_model extends Controller{
     public function getOperator($id){
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id_operator=:id_operator');
         $this->db->bind('id_operator', $id);
-        $data = $this->db->single();
-        return  $this->view('operator/update',$data);
+        return $this->db->single();
     }
 
     //menambahkan data operator

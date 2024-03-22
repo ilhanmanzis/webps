@@ -19,8 +19,7 @@ class Sift_model extends Controller{
     public function getSift($id){
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id_sift=:id_sift');
         $this->db->bind('id_sift', $id);
-        $data = $this->db->single();
-        return  $this->view('sift/update',$data);
+        return $this->db->single();
     }
 
     //menambahkan data sift

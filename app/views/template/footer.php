@@ -12,7 +12,7 @@
 <footer class="sticky-footer bg-white">
 <div class="container my-auto">
 <div class="copyright text-center my-auto">
-    <span>Copyright &copy; Your Website 2021</span>
+    <span>Copyright &copy; Your Website 2024</span>
 </div>
 </div>
 </footer>
@@ -72,9 +72,16 @@ aria-hidden="true">
 <script>
     $(document).ready(function() {
             $('#dataTable').DataTable({
-            searching: false // Menghilangkan fitur pencarian
+            searching: false, // Menghilangkan fitur pencarian
+            ordering: false,
+            columnDefs: [{
+                ordering: false,
+                orderable: false, // Nonaktifkan sorting
+                targets: 0 // Kolom pertama (indeks 0)
+            }]
         });
     });
+
 </script>
 <script src="<?= BASEURL;?>/public/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 

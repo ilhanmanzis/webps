@@ -4,7 +4,11 @@ class Device extends Controller{
     public function index(){
         if(isset($_SESSION['admin'])){
             $data['device'] = $this->model('Device_model')->getAllDevice();
-            $this->view('template/header');
+            $data['operator'] = $this->model('Operator_model')->getAllOperator();
+            $data['sift'] = $this->model('Sift_model')->getAllSift();
+            $data['operatorSession'] = $this->model('Operator_model')->getOperator($_SESSION['operator']);
+            $data['siftSession'] = $this->model('Sift_model')->getSift($_SESSION['sift']);
+            $this->view('template/header',$data);
             $this->view('device/index', $data);
             $this->view('template/footer');
         }else{
@@ -14,7 +18,8 @@ class Device extends Controller{
 
     public function getdevice(){
         if(isset($_SESSION['admin'])){
-            $this->model('Device_model')->getDevice($_POST['id_device']);
+            $data = $this->model('Device_model')->getDevice($_POST['id_device']);
+            $this->view('device/update',$data);
         }else{
             header('location:' . BASEURL . '/login');
         }

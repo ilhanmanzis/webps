@@ -1,6 +1,6 @@
 <?php
 
-class Device_model extends Controller{
+class Device_model{
     
     private $table = 'device';
     private $db;
@@ -19,8 +19,7 @@ class Device_model extends Controller{
     public function getDevice($id){
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id_device=:id');
         $this->db->bind('id', $id);
-        $data = $this->db->single();
-        return  $this->view('device/update',$data);
+        return $this->db->single();
     }
 
     //menambahkan data device

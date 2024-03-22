@@ -4,7 +4,10 @@ class Sift extends Controller{
     public function index(){
         if(isset($_SESSION['admin'])){
             $data['sift'] = $this->model('Sift_model')->getAllSift();
-            $this->view('template/header');
+            $data['operator'] = $this->model('Operator_model')->getAllOperator();
+            $data['operatorSession'] = $this->model('Operator_model')->getOperator($_SESSION['operator']);
+            $data['siftSession'] = $this->model('Sift_model')->getSift($_SESSION['sift']);
+            $this->view('template/header',$data);
             $this->view('sift/index', $data);
             $this->view('template/footer');
         }else{
@@ -15,7 +18,8 @@ class Sift extends Controller{
     //mengambil data spesifik
     public function getsift(){
         if(isset($_SESSION['admin'])){
-            $this->model('Sift_model')->getSift($_POST['id_sift']);
+            $data = $this->model('Sift_model')->getSift($_POST['id_sift']);
+            $this->view('sift/update',$data);
         }else{
             header('location:' . BASEURL . '/login');
         }

@@ -4,7 +4,10 @@ class Operator extends Controller{
     public function index(){
         if(isset($_SESSION['admin'])){
             $data['operator'] = $this->model('Operator_model')->getAllOperator();
-            $this->view('template/header');
+            $data['sift'] = $this->model('Sift_model')->getAllSift();
+            $data['operatorSession'] = $this->model('Operator_model')->getOperator($_SESSION['operator']);
+            $data['siftSession'] = $this->model('Sift_model')->getSift($_SESSION['sift']);
+            $this->view('template/header',$data);
             $this->view('operator/index', $data);
             $this->view('template/footer');
         }else{
@@ -15,7 +18,8 @@ class Operator extends Controller{
     //mengambil data spesifik
     public function getoperator(){
         if(isset($_SESSION['admin'])){
-            $this->model('Operator_model')->getOperator($_POST['id_operator']);
+            $data = $this->model('Operator_model')->getOperator($_POST['id_operator']);
+            $this->view('operator/update',$data);
         }else{
             header('location:' . BASEURL . '/login');
         }
