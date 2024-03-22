@@ -83,23 +83,9 @@
             <td class="align-middle border center"><?= $transaksi['bayar']; ?></td>
             <td class="align-middle border center"><?= $transaksi['keterangan']; ?></td>
 
-            <td class="align-middle border center">
-                <?php 
-                    foreach($data['operator'] as $operator):
-                        if($operator['id_operator']==$transaksi['id_operator']){
-                            echo $operator['name_operator'];
-                        }
-                    endforeach;
-                ?>
-            </td>
+            <td class="align-middle border center"><?=$transaksi['name_operator'];?></td>
 
-            <td class="align-middle border center"><?php 
-                    foreach($data['sift'] as $sift):
-                        if($sift['id_sift']==$transaksi['id_sift']){
-                            echo $sift['name_sift'];
-                        }
-                    endforeach;
-                ?></td>
+            <td class="align-middle border center"><?=$transaksi['name_sift'];?></td>
         </tr>
         <?php
         $device += $transaksi['harga_device'];

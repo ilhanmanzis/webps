@@ -94,11 +94,14 @@
             //sift
             $sift = $_SESSION['sift'];
 
+            //admin
+            $admin = $_SESSION['admin'];
+
             //tambah waktu =0
             $tambahWaktu = 0;
             $tambah_harga = 0;
 
-            $query = "INSERT INTO " . $this->table . " VALUES ('', :tanggal, :no_tv, :paket, :id_device, :jam_mulai, :jam_selesai, :tambah_waktu, :harga_device, :minuman_3k, :minuman_4k, :harga_minum, :total, :bayar, :keterangan, :id_sift, :id_operator, :tambah_harga)";
+            $query = "INSERT INTO " . $this->table . " VALUES ('', :tanggal, :no_tv, :paket, :id_device, :jam_mulai, :jam_selesai, :tambah_waktu, :harga_device, :minuman_3k, :minuman_4k, :harga_minum, :total, :bayar, :keterangan, :id_sift, :id_operator, :tambah_harga, :id_admin)";
             $this->db->query($query);
             $this->db->bind('tanggal', $today);
             $this->db->bind('no_tv', $data['tv']);
@@ -117,6 +120,7 @@
             $this->db->bind('id_sift', $sift);
             $this->db->bind('id_operator', $operator);
             $this->db->bind('tambah_harga', $tambah_harga);
+            $this->db->bind('id_admin', $admin);
 
             $this->db->execute();
             return $this->db->rowCount();
